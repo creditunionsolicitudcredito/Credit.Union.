@@ -29,7 +29,7 @@
 
     .wrapper {
       width: 100%;
-      max-width: 480px; /* Ancho máximo típico de móvil */
+      max-width: 480px;
       margin: 0 auto;
       padding: 1rem;
       flex: 1;
@@ -202,7 +202,6 @@
       font-size: 0.8rem;
     }
 
-    /* Grid de una sola columna para móvil */
     .form-grid {
       display: flex;
       flex-direction: column;
@@ -275,7 +274,7 @@
       background: #008f4c;
     }
 
-    /* LOADER Y RESULTADOS COMPACTOS */
+    /* LOADER Y RESULTADOS - COMPLETO */
     .resultado {
       text-align: center;
       display: none;
@@ -304,28 +303,50 @@
       padding: 1rem;
       border-radius: 16px;
       margin: 1rem 0;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .resumen p {
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted rgba(0,107,60,0.1);
+      padding-bottom: 0.3rem;
+    }
+
+    .resumen p:last-child {
+      border-bottom: none;
+    }
+
+    .resumen strong {
+      color: #006b3c;
+    }
+
+    .resumen hr {
+      margin: 0.8rem 0;
+      border: none;
+      border-top: 1px solid rgba(0,107,60,0.2);
     }
 
     .whatsapp-btn {
       display: inline-block;
       background: #25D366;
       color: white;
-      padding: 0.8rem 1.5rem;
+      padding: 0.9rem 1.5rem;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 1rem;
       transition: background 0.15s;
       border: 1px solid rgba(255,255,255,0.3);
       box-shadow: 0 4px 10px rgba(37,211,102,0.3);
       width: 100%;
-      max-width: 280px;
-      margin: 0 auto;
+      max-width: 300px;
+      margin: 0.5rem auto;
+    }
+
+    .whatsapp-btn i {
+      margin-right: 8px;
     }
 
     /* FOOTER COMPACTO */
@@ -385,14 +406,13 @@
       padding-top: 0.8rem;
     }
 
-    /* Ajustes adicionales para móvil */
     input, select, button {
       -webkit-appearance: none;
       appearance: none;
     }
 
     input[type="date"] {
-      min-height: 44px; /* Mejor touch target */
+      min-height: 44px;
     }
   </style>
 </head>
@@ -448,7 +468,7 @@
     <form id="loanForm">
       <div class="form-grid">
         <div class="form-group">
-          <label><i class="fas fa-passport"></i> Documento</label>
+          <label><i class="fas fa-passport"></i> Tipo de Documento</label>
           <select id="tipoDocumento" class="form-control" required>
             <option value="ID">ID</option>
             <option value="Pasaporte">Pasaporte</option>
@@ -458,12 +478,12 @@
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-id-card"></i> Número</label>
+          <label><i class="fas fa-id-card"></i> Número de Documento</label>
           <input type="text" id="documento" class="form-control" required placeholder="N° de documento">
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-user"></i> Nombre completo</label>
+          <label><i class="fas fa-user"></i> Nombre Completo</label>
           <input type="text" id="nombre" class="form-control" required placeholder="Como en tu ID">
         </div>
 
@@ -478,7 +498,7 @@
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-users"></i> Estado civil</label>
+          <label><i class="fas fa-users"></i> Estado Civil</label>
           <select id="estadoCivil" class="form-control" required>
             <option value="Soltero">Soltero/a</option>
             <option value="Casado">Casado/a</option>
@@ -488,7 +508,7 @@
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-calendar-alt"></i> Fecha nacimiento</label>
+          <label><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento</label>
           <input type="date" id="fechaNacimiento" class="form-control" required>
         </div>
 
@@ -498,17 +518,17 @@
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-envelope"></i> Email</label>
+          <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
           <input type="email" id="correo" class="form-control" required placeholder="tu@email.com">
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-dollar-sign"></i> Ingreso mensual</label>
+          <label><i class="fas fa-dollar-sign"></i> Ingreso Mensual (USD)</label>
           <input type="number" id="ingreso" class="form-control" required placeholder="$0.00">
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-hand-holding-usd"></i> Monto solicitado</label>
+          <label><i class="fas fa-hand-holding-usd"></i> Monto Solicitado (USD)</label>
           <input type="number" id="monto" class="form-control" required placeholder="$0.00">
         </div>
 
@@ -523,7 +543,7 @@
         </div>
 
         <div class="form-group">
-          <label><i class="fas fa-comment"></i> Uso del préstamo</label>
+          <label><i class="fas fa-comment"></i> Uso del Préstamo</label>
           <input type="text" id="uso" class="form-control" required placeholder="Ej: Carro, casa, negocio">
         </div>
       </div>
@@ -533,7 +553,7 @@
 
     <div id="loading" class="resultado">
       <div class="loader"></div>
-      <p style="font-weight: 500; color:#006b3c; font-size:0.9rem;">Procesando...</p>
+      <p style="font-weight: 500; color:#006b3c; font-size:0.9rem;">Procesando su solicitud, por favor espere...</p>
     </div>
 
     <div id="resultado" class="resultado"></div>
@@ -556,7 +576,7 @@
       </div>
     </div>
     <div class="copyright">
-      © 2025 NEPA Credit Union
+      © 2025 NEPA Credit Union. Todos los derechos reservados.
     </div>
   </footer>
 </div>
@@ -592,17 +612,28 @@ document.getElementById("loanForm").addEventListener("submit", function(event){
     const resultadoDiv = document.getElementById("resultado");
     resultadoDiv.style.display = "block";
     resultadoDiv.innerHTML = `
-      <h3 style="color:#006b3c; margin-bottom:0.5rem;">✅ ¡Aprobado!</h3>
-      <p style="font-size:0.9rem;">Hola <strong>${nombre}</strong>, tu solicitud fue aprobada.</p>
+      <h3 style="color:#006b3c; margin-bottom:1rem;">✅ Solicitud Aprobada</h3>
+      <p style="margin-bottom:1rem;">Estimado/a <strong>${nombre}</strong>, su solicitud de crédito ha sido aprobada con éxito.</p>
       <div class="resumen">
-        <p><strong>Monto:</strong> $${monto.toFixed(2)}</p>
-        <p><strong>Plazo:</strong> ${plazoMeses} meses</p>
-        <p><strong>Pago mensual:</strong> $${pagoMensual.toFixed(2)}</p>
-        <p><strong>Total a pagar:</strong> $${totalPagar.toFixed(2)}</p>
-        <p style="font-size:0.75rem; margin-top:0.5rem;">Interés anual: ${interesAnual}%</p>
+        <p><strong>Tipo de Documento:</strong> <span>${tipoDocumento}</span></p>
+        <p><strong>Número:</strong> <span>${documento}</span></p>
+        <p><strong>Ciudad:</strong> <span>${ciudad}</span></p>
+        <p><strong>Estado:</strong> <span>${estado}</span></p>
+        <p><strong>Estado Civil:</strong> <span>${estadoCivil}</span></p>
+        <p><strong>Fecha de Nacimiento:</strong> <span>${fechaNacimiento}</span></p>
+        <p><strong>Ocupación:</strong> <span>${ocupacion}</span></p>
+        <p><strong>Correo:</strong> <span>${correo}</span></p>
+        <p><strong>Ingreso Mensual:</strong> <span>$${ingreso.toFixed(2)}</span></p>
+        <p><strong>Monto Aprobado:</strong> <span>$${monto.toFixed(2)}</span></p>
+        <p><strong>Plazo:</strong> <span>${plazoMeses} meses</span></p>
+        <p><strong>Uso del Préstamo:</strong> <span>${uso}</span></p>
+        <hr>
+        <p><strong>Interés Anual:</strong> <span>${interesAnual}%</span></p>
+        <p><strong>Pago Mensual:</strong> <span>$${pagoMensual.toFixed(2)}</span></p>
+        <p><strong>Total a Pagar:</strong> <span>$${totalPagar.toFixed(2)}</span></p>
       </div>
-      <a class="whatsapp-btn" href="https://wa.me/16395590867?text=Hola,%20soy%20${encodeURIComponent(nombre)}.%20Mi%20solicitud%20fue%20aprobada.%0AMonto:%20$${monto.toFixed(2)}%0APlazo:%20${plazoMeses}meses%0APago%20mensual:%20$${pagoMensual.toFixed(2)}" target="_blank">
-        <i class="fab fa-whatsapp" style="margin-right:5px;"></i> WhatsApp
+      <a class="whatsapp-btn" href="https://wa.me/16395590867?text=Hola,%20soy%20${encodeURIComponent(nombre)}.%20Mi%20solicitud%20de%20crédito%20fue%20aprobada.%0A%0AInformación%20del%20crédito:%0ATipo%20de%20documento:%20${encodeURIComponent(tipoDocumento)}%0ANúmero:%20${encodeURIComponent(documento)}%0AEstado:%20${encodeURIComponent(estado)}%0AIngreso:%20$${ingreso.toFixed(2)}%0AMonto:%20$${monto.toFixed(2)}%0APlazo:%20${plazoMeses}%20meses%0AInterés:%20${interesAnual}%0APago%20mensual:%20$${pagoMensual.toFixed(2)}" target="_blank">
+        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
       </a>
     `;
   }, 30000);
