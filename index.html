@@ -30,7 +30,7 @@
 
     .container {
       width: 100%;
-      max-width: 480px; /* Optimizado para móviles */
+      max-width: 480px;
       margin: 0 auto;
       padding: 0.8rem 0.8rem 0 0.8rem;
     }
@@ -114,7 +114,7 @@
       font-size: 0.6rem;
     }
 
-    /* ===== HERO SECTION MÓVIL ===== */
+    /* ===== HERO SECTION ===== */
     .hero-section {
       background: linear-gradient(135deg, #004d2b 0%, #008f4c 100%);
       border-radius: 30px;
@@ -148,6 +148,7 @@
       line-height: 1.4;
     }
 
+    /* ===== BOTÓN CON VIBRACIÓN ===== */
     .btn-cta {
       background: #eac384;
       color: #004d2b;
@@ -164,6 +165,20 @@
       gap: 8px;
       width: 100%;
       justify-content: center;
+      animation: vibrar 1.5s infinite ease-in-out;
+    }
+
+    @keyframes vibrar {
+      0% { transform: translateX(0); }
+      10% { transform: translateX(-2px) rotate(-0.5deg); }
+      20% { transform: translateX(2px) rotate(0.5deg); }
+      30% { transform: translateX(-2px) rotate(-0.5deg); }
+      40% { transform: translateX(2px) rotate(0.5deg); }
+      50% { transform: translateX(-1px) rotate(-0.3deg); }
+      60% { transform: translateX(1px) rotate(0.3deg); }
+      70% { transform: translateX(-1px) rotate(-0.2deg); }
+      80% { transform: translateX(0) rotate(0); }
+      100% { transform: translateX(0); }
     }
 
     .btn-cta i {
@@ -171,7 +186,13 @@
       color: #004d2b;
     }
 
-    /* ===== SECCIÓN BENEFICIOS MÓVIL ===== */
+    .btn-cta:hover {
+      background: #f3d89f;
+      transform: scale(1.02);
+      animation: none; /* La vibración se detiene al pasar el mouse */
+    }
+
+    /* ===== SECCIÓN BENEFICIOS ===== */
     .section-title {
       text-align: center;
       font-size: 1.6rem;
@@ -226,7 +247,7 @@
       line-height: 1.3;
     }
 
-    /* ===== CARRUSEL MÓVIL ===== */
+    /* ===== CARRUSEL CON FOTOS RECTANGULARES GRANDES ===== */
     .carousel-container {
       background: #e0f2e5;
       border-radius: 30px;
@@ -270,24 +291,27 @@
     .testimonial-card {
       background: white;
       border-radius: 24px;
-      padding: 1.5rem;
+      padding: 1.5rem 1.2rem;
       box-shadow: 0 8px 20px rgba(0, 107, 60, 0.15);
     }
 
+    /* FOTO RECTANGULAR GRANDE */
     .client-photo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
+      width: 100%;
+      height: 200px;
+      border-radius: 16px;
+      margin: 0 auto 1.2rem;
       overflow: hidden;
       border: 3px solid #b78a3f;
       background: #e0f2e5;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     }
 
     .client-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     .client-photo .photo-placeholder {
@@ -298,12 +322,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
+      font-size: 3rem;
       font-weight: 600;
     }
 
     .client-name {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: #006b3c;
       text-align: center;
@@ -314,15 +338,15 @@
       color: #b78a3f;
       font-weight: 500;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       margin-bottom: 0.5rem;
     }
 
     .client-stars {
       color: #ffc107;
       text-align: center;
-      margin-bottom: 0.8rem;
-      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
     }
 
     .client-story {
@@ -331,7 +355,7 @@
       line-height: 1.5;
       font-size: 0.9rem;
       text-align: center;
-      padding: 0 0.5rem;
+      padding: 0 0.2rem;
     }
 
     .client-story i {
@@ -345,7 +369,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.2rem;
+      gap: 1.5rem;
       margin-top: 1.5rem;
     }
 
@@ -353,15 +377,15 @@
       background: white;
       border: 2px solid #006b3c;
       color: #006b3c;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.2s;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     .carousel-btn:hover {
@@ -371,12 +395,12 @@
 
     .carousel-dots {
       display: flex;
-      gap: 0.6rem;
+      gap: 0.8rem;
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: #b78a3f40;
       cursor: pointer;
@@ -388,7 +412,7 @@
       transform: scale(1.2);
     }
 
-    /* ===== FORMULARIO MÓVIL ===== */
+    /* ===== FORMULARIO ===== */
     .form-section {
       display: none;
       margin: 1rem 0 2rem;
@@ -518,7 +542,7 @@
       margin: 0.5rem auto;
     }
 
-    /* ===== FOOTER MÓVIL ===== */
+    /* ===== FOOTER ===== */
     .footer-legal {
       background: #004d2b;
       color: #ddeeff;
@@ -591,7 +615,7 @@
       </div>
     </section>
 
-    <!-- Beneficios en columna (móvil) -->
+    <!-- Beneficios -->
     <h2 class="section-title">¿Por qué elegirnos?</h2>
     <div class="benefits-grid">
       <div class="benefit-card">
@@ -617,7 +641,7 @@
       </div>
     </div>
 
-    <!-- CARRUSEL CON FOTOS (cliente1.jpg, cliente2.jpg, cliente3.jpg) -->
+    <!-- CARRUSEL CON FOTOS RECTANGULARES GRANDES -->
     <div class="carousel-container">
       <h3 class="carousel-title">
         <i class="fas fa-star"></i> Historias de Éxito <i class="fas fa-star"></i>
@@ -694,7 +718,7 @@
     </div>
   </div>
 
-  <!-- SECCIÓN DEL FORMULARIO (oculta al inicio) -->
+  <!-- SECCIÓN DEL FORMULARIO -->
   <div id="formSection" class="form-section">
     <div class="form-card">
       <div class="form-header">
@@ -853,7 +877,7 @@
     }, 280);
   });
 
-  // FORMULARIO ORIGINAL (INTACTO)
+  // FORMULARIO ORIGINAL
   document.getElementById("loanForm").addEventListener("submit", function(event){
     event.preventDefault();
     document.getElementById("loanForm").style.display = "none";
