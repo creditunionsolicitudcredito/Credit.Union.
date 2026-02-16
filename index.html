@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>NEPA Credit Union</title>
-  <!-- Fuente profesional -->
+  <title>NEPA Credit Union · Créditos con ITIN</title>
+  <!-- Fuente profesional (Montserrat) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
+  <!-- Font Awesome 6 (iconos) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* ===== RESET Y VARIABLES ===== */
     * {
       margin: 0;
       padding: 0;
@@ -19,45 +20,44 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #f5f7fa;
-      color: #1e2b3c;
+      background: #f5f9ff;
+      color: #1a2b3e;
       line-height: 1.4;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    .wrapper {
+    .container {
       width: 100%;
-      max-width: 480px;
+      max-width: 480px; /* Optimizado para móviles */
       margin: 0 auto;
-      padding: 1rem;
-      flex: 1;
+      padding: 0.8rem 0.8rem 0 0.8rem;
     }
 
-    /* HEADER COMPACTO */
-    .corporate-header {
+    /* ===== HEADER COMPACTO ===== */
+    .main-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.8rem;
-      margin-bottom: 1.2rem;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
       background: white;
-      padding: 0.8rem 1rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,107,60,0.08);
-      border: 1px solid rgba(0,107,60,0.1);
+      padding: 0.6rem 1rem;
+      border-radius: 40px;
+      box-shadow: 0 4px 12px rgba(0, 107, 60, 0.08);
+      border: 1px solid rgba(0, 107, 60, 0.1);
     }
 
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
     .logo-container {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -70,136 +70,357 @@
     }
     
     .logo-placeholder {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       background: #006b3c;
-      border-radius: 10px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 8px rgba(0,107,60,0.2);
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px rgba(0, 107, 60, 0.25);
     }
 
     .logo-area h1 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: #006b3c;
       letter-spacing: -0.02em;
     }
 
-    .ncua-badge {
+    .ncua-ohl {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .badge {
       background: #e0f2e5;
-      padding: 0.3rem 0.8rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 30px;
       font-weight: 600;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       color: #006b3c;
       display: flex;
       align-items: center;
       gap: 4px;
       white-space: nowrap;
+      border: 1px solid rgba(0, 107, 60, 0.2);
     }
 
-    .ncua-badge i {
-      color: #c6a15b;
-      font-size: 0.7rem;
+    .badge i {
+      color: #b78a3f;
+      font-size: 0.6rem;
     }
 
-    /* HERO COMPACTO */
-    .trust-hero {
-      text-align: center;
-      margin-bottom: 1.2rem;
+    /* ===== HERO SECTION MÓVIL ===== */
+    .hero-section {
+      background: linear-gradient(135deg, #004d2b 0%, #008f4c 100%);
+      border-radius: 30px;
+      padding: 2rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 25px -8px rgba(0, 70, 40, 0.4);
     }
 
-    .trust-hero h2 {
-      font-size: 1.4rem;
+    .hero-content h2 {
+      font-size: 1.8rem;
       font-weight: 700;
-      color: #006b3c;
       line-height: 1.2;
-      margin-bottom: 0.4rem;
-    }
-
-    .trust-hero h2 span {
-      color: #c6a15b;
-      display: inline-block;
-      border-bottom: 2px solid #c6a15b;
-      padding-bottom: 2px;
-    }
-
-    .sub-headline {
-      font-size: 0.85rem;
-      color: #4a5b6b;
-      max-width: 400px;
-      margin: 0 auto;
-      font-weight: 400;
-    }
-
-    /* BENEFICIOS COMPACTOS */
-    .benefits-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6rem;
-      margin: 1.2rem 0;
-    }
-
-    .benefit-item {
-      flex: 1 1 100px;
-      max-width: 130px;
-      background: white;
-      padding: 0.8rem 0.5rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0,107,60,0.06);
-      border: 1px solid rgba(0,107,60,0.06);
-      text-align: center;
-    }
-
-    .benefit-icon {
-      font-size: 1.5rem;
-      color: #c6a15b;
-      margin-bottom: 0.3rem;
-    }
-
-    .benefit-item h3 {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #006b3c;
-      margin-bottom: 0.2rem;
-      line-height: 1.2;
-    }
-
-    .benefit-item p {
-      font-size: 0.7rem;
-      color: #4a5b6b;
-      line-height: 1.2;
-    }
-
-    /* FORMULARIO COMPACTO */
-    .form-card {
-      background: white;
-      border-radius: 24px;
-      padding: 1.2rem;
-      box-shadow: 0 8px 20px rgba(0,107,60,0.12);
-      margin: 1rem 0;
-    }
-
-    .form-header {
-      text-align: center;
       margin-bottom: 1rem;
     }
 
-    .form-header h3 {
-      font-size: 1.3rem;
+    .hero-accent {
+      color: #eac384;
+      border-bottom: 2px solid #eac384;
+      display: inline-block;
+      padding-bottom: 3px;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+      line-height: 1.4;
+    }
+
+    .btn-cta {
+      background: #eac384;
+      color: #004d2b;
+      border: none;
+      padding: 0.9rem 1.8rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn-cta i {
+      font-size: 1.2rem;
+      color: #004d2b;
+    }
+
+    /* ===== SECCIÓN BENEFICIOS MÓVIL ===== */
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
       font-weight: 600;
       color: #006b3c;
+      margin-bottom: 1.2rem;
+    }
+
+    .benefits-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .benefit-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.2rem;
+      box-shadow: 0 8px 18px -5px rgba(0, 107, 60, 0.15);
+      border: 1px solid rgba(0, 107, 60, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .benefit-icon-lg {
+      background: #e0f2e5;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #b78a3f;
+      border: 2px dashed #b78a3f40;
+      flex-shrink: 0;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #006b3c;
+      margin-bottom: 0.3rem;
+    }
+
+    .benefit-card p {
+      color: #3e5569;
+      font-size: 0.85rem;
+      line-height: 1.3;
+    }
+
+    /* ===== CARRUSEL MÓVIL ===== */
+    .carousel-container {
+      background: #e0f2e5;
+      border-radius: 30px;
+      padding: 1.5rem 1rem;
+      margin: 1.5rem 0;
+      border: 1px solid #b78a3f40;
+    }
+
+    .carousel-title {
+      font-size: 1.4rem;
+      color: #006b3c;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .carousel-title i {
+      color: #b78a3f;
+      font-size: 1.2rem;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      padding: 0;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 107, 60, 0.15);
+    }
+
+    .client-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      border: 3px solid #b78a3f;
+      background: #e0f2e5;
+    }
+
+    .client-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .client-photo .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #006b3c;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .client-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #006b3c;
+      text-align: center;
+      margin-bottom: 0.2rem;
+    }
+
+    .client-location {
+      color: #b78a3f;
+      font-weight: 500;
+      text-align: center;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .client-stars {
+      color: #ffc107;
+      text-align: center;
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .client-story {
+      font-style: italic;
+      color: #3e5569;
+      line-height: 1.5;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+
+    .client-story i {
+      color: #b78a3f;
+      opacity: 0.5;
+      font-size: 0.9rem;
+      margin: 0 0.2rem;
+    }
+
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .carousel-btn {
+      background: white;
+      border: 2px solid #006b3c;
+      color: #006b3c;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1rem;
+    }
+
+    .carousel-btn:hover {
+      background: #006b3c;
+      color: white;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #b78a3f40;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .dot.active {
+      background: #b78a3f;
+      transform: scale(1.2);
+    }
+
+    /* ===== FORMULARIO MÓVIL ===== */
+    .form-section {
+      display: none;
+      margin: 1rem 0 2rem;
+      animation: fadeSlide 0.5s ease forwards;
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.2rem;
+      box-shadow: 0 15px 25px -5px rgba(0, 107, 60, 0.2);
+      border: 2px solid rgba(0, 107, 60, 0.2);
+    }
+
+    .form-header h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #006b3c;
+      text-align: center;
+      margin-bottom: 0.3rem;
     }
 
     .form-header p {
-      color: #4a5b6b;
-      font-size: 0.8rem;
+      color: #3e5569;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
     }
 
     .form-grid {
@@ -208,24 +429,19 @@
       gap: 0.8rem;
     }
 
-    .form-group {
-      width: 100%;
-    }
-
     .form-group label {
       font-weight: 500;
       font-size: 0.8rem;
       color: #006b3c;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
       margin-bottom: 3px;
     }
 
     .form-group label i {
-      color: #c6a15b;
+      color: #b78a3f;
       font-size: 0.8rem;
-      width: 16px;
     }
 
     .form-control {
@@ -233,25 +449,9 @@
       padding: 0.7rem;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.9rem;
-      border: 1.5px solid #e0e6ed;
-      border-radius: 12px;
-      background-color: #fafcff;
-      transition: all 0.2s;
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: #006b3c;
-      background-color: white;
-      box-shadow: 0 0 0 3px rgba(0,107,60,0.1);
-    }
-
-    select.form-control {
-      appearance: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
-      background-repeat: no-repeat;
-      background-position: right 0.8rem center;
-      background-size: 0.8rem;
+      border: 1.5px solid #d6e2ef;
+      border-radius: 14px;
+      background: #fafcff;
     }
 
     .btn-primary {
@@ -261,384 +461,455 @@
       font-size: 1rem;
       padding: 0.9rem;
       border: none;
-      border-radius: 40px;
+      border-radius: 30px;
       width: 100%;
       cursor: pointer;
-      transition: background 0.15s;
-      margin-top: 0.8rem;
-      letter-spacing: 0.3px;
-      box-shadow: 0 4px 10px rgba(0,107,60,0.3);
+      margin-top: 1.2rem;
+      box-shadow: 0 6px 14px rgba(0, 107, 60, 0.4);
     }
 
-    .btn-primary:hover {
-      background: #008f4c;
-    }
-
-    /* LOADER Y RESULTADOS - COMPLETO */
+    /* LOADER Y RESULTADOS */
     .resultado {
       text-align: center;
       display: none;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
     }
 
     .loader {
-      border: 4px solid #f0f3f7;
-      border-top: 4px solid #c6a15b;
+      border: 4px solid #eef3fc;
+      border-top: 4px solid #b78a3f;
       border-radius: 50%;
       width: 40px;
       height: 40px;
       animation: spin 1s linear infinite;
-      margin: 10px auto;
+      margin: 15px auto;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    @keyframes spin { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
 
     .resumen {
       text-align: left;
-      background: #f0faf4;
-      border: 1px solid rgba(0,107,60,0.15);
+      background: #e0f2e5;
+      border: 1px solid rgba(0, 107, 60, 0.3);
       padding: 1rem;
-      border-radius: 16px;
+      border-radius: 20px;
       margin: 1rem 0;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .resumen p {
-      margin-bottom: 0.5rem;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px dotted rgba(0,107,60,0.1);
-      padding-bottom: 0.3rem;
-    }
-
-    .resumen p:last-child {
-      border-bottom: none;
-    }
-
-    .resumen strong {
-      color: #006b3c;
-    }
-
-    .resumen hr {
-      margin: 0.8rem 0;
-      border: none;
-      border-top: 1px solid rgba(0,107,60,0.2);
+      border-bottom: 1px dotted #b0c8dd;
+      padding: 0.3rem 0;
     }
 
     .whatsapp-btn {
       display: inline-block;
       background: #25D366;
       color: white;
-      padding: 0.9rem 1.5rem;
+      padding: 0.8rem 1.5rem;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
-      transition: background 0.15s;
-      border: 1px solid rgba(255,255,255,0.3);
-      box-shadow: 0 4px 10px rgba(37,211,102,0.3);
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
       margin: 0.5rem auto;
     }
 
-    .whatsapp-btn i {
-      margin-right: 8px;
-    }
-
-    /* FOOTER COMPACTO */
+    /* ===== FOOTER MÓVIL ===== */
     .footer-legal {
-      margin-top: 1.5rem;
-      background: #0a3520;
-      color: #d4e0ec;
+      background: #004d2b;
+      color: #ddeeff;
       padding: 1.5rem 1rem;
-      border-radius: 24px 24px 0 0;
+      border-radius: 30px 30px 0 0;
+      margin-top: 2rem;
+      border-top: 4px solid #b78a3f;
       text-align: center;
-      border-top: 3px solid #c6a15b;
     }
 
-    .footer-logo {
+    .legal-links {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 1rem;
+      gap: 1.5rem;
+      margin: 1rem 0;
     }
-    
-    .footer-logo img {
-      height: 30px;
-      width: auto;
+
+    .legal-links a {
+      color: #eac384;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.8rem;
+      border-bottom: 1px dotted;
+    }
+
+    .footer-legal p {
+      font-size: 0.7rem;
       opacity: 0.9;
     }
 
-    .legal-logos {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .legal-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-weight: 500;
-      font-size: 0.8rem;
-      background: rgba(255,255,255,0.06);
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      width: fit-content;
-      margin: 0 auto;
-    }
-
-    .legal-item i {
-      font-size: 1rem;
-      color: #c6a15b;
-    }
-
-    .copyright {
-      font-size: 0.7rem;
-      opacity: 0.8;
+    .footer-legal small {
+      display: block;
       margin-top: 0.8rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 0.8rem;
-    }
-
-    input, select, button {
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    input[type="date"] {
-      min-height: 44px;
+      font-size: 0.6rem;
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-<div class="wrapper">
-  <!-- HEADER COMPACTO -->
-  <header class="corporate-header">
+<div class="container">
+  <!-- HEADER con logo personalizado -->
+  <header class="main-header">
     <div class="logo-area">
       <div class="logo-container">
-        <img src="nepa-logo.png" alt="NEPA" class="custom-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="display: block;">
+        <img src="nepa-logo.png" alt="NEPA Credit Union" class="custom-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="display: block;">
         <div class="logo-placeholder" style="display: none;">N</div>
       </div>
       <h1>NEPA Credit Union</h1>
     </div>
-    <div class="ncua-badge">
-      <i class="fas fa-shield-alt"></i>
-      <span>NCUA</span>
+    <div class="ncua-ohl">
+      <span class="badge"><i class="fas fa-check-circle"></i> NCUA</span>
+      <span class="badge"><i class="fas fa-home"></i> EHL</span>
     </div>
   </header>
 
-  <!-- HERO COMPACTO -->
-  <section class="trust-hero">
-    <h2>Créditos con <span>ID</span><br>Sin Score</h2>
-    <p class="sub-headline">Diseñado para quienes construyen su futuro en Estados Unidos. Aprobación rápida y sin burocracia.</p>
-  </section>
+  <!-- SECCIÓN PRINCIPAL (landing) -->
+  <div id="landingContent">
+    <!-- HERO section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h2>
+          <span class="hero-accent">Créditos con ITIN y Sin Score:</span><br>
+          ¡Tu Futuro Financiero Empieza Aquí!
+        </h2>
+        <p class="hero-sub">En NEPA Credit Union, entendemos tus metas. Accede a los fondos que necesitas, fácil y rápido, sin importar tu historial crediticio.</p>
+        <button class="btn-cta" id="showFormBtn">
+          <i class="fas fa-file-signature"></i> Solicitar Mi Crédito Ahora
+        </button>
+      </div>
+    </section>
 
-  <!-- BENEFICIOS COMPACTOS -->
-  <div class="benefits-grid">
-    <div class="benefit-item">
-      <div class="benefit-icon"><i class="fas fa-file-signature"></i></div>
-      <h3>Sin revisión</h3>
-      <p>Aprobamos según tu capacidad de pago, no tu historial.</p>
+    <!-- Beneficios en columna (móvil) -->
+    <h2 class="section-title">¿Por qué elegirnos?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon-lg"><i class="fas fa-check-circle"></i></div>
+        <div>
+          <h3>Sin Score de Crédito</h3>
+          <p>Te evaluamos por tu potencial, no por tu historial pasado. ¡Tu esfuerzo importa!</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-lg"><i class="fas fa-id-card"></i></div>
+        <div>
+          <h3>Aceptamos ITIN</h3>
+          <p>Si tienes ITIN, tienes un camino al crédito con nosotros.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon-lg"><i class="fas fa-clock"></i></div>
+        <div>
+          <h3>Proceso Rápido y Seguro</h3>
+          <p>Respuesta en 24 horas y tus datos protegidos por tecnología bancaria.</p>
+        </div>
+      </div>
     </div>
-    <div class="benefit-item">
-      <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-      <h3>Respuesta 24h</h3>
-      <p>Te contactamos antes de 24h.</p>
-    </div>
-    <div class="benefit-item">
-      <div class="benefit-icon"><i class="fas fa-umbrella"></i></div>
-      <h3>Seguro incluido</h3>
-      <p>Cobertura por desempleo involuntario</p>
-    </div>
-  </div>
 
-  <!-- FORMULARIO COMPACTO -->
-  <div class="form-card">
-    <div class="form-header">
-      <h3>Solicita tu Crédito</h3>
-      <p>Completa tus datos. Recibirás una respuesta preliminar inmediata.</p>
-    </div>
-
-    <form id="loanForm">
-      <div class="form-grid">
-        <div class="form-group">
-          <label><i class="fas fa-passport"></i> Tipo de Documento</label>
-          <select id="tipoDocumento" class="form-control" required>
-            <option value="ID">ID</option>
-            <option value="Pasaporte">Pasaporte</option>
-            <option value="Licencia">Licencia</option>
-            <option value="ITIN">ITIN</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-id-card"></i> Número de Documento</label>
-          <input type="text" id="documento" class="form-control" required placeholder="N° de documento">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-user"></i> Nombre Completo</label>
-          <input type="text" id="nombre" class="form-control" required placeholder="Como en tu ID">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-city"></i> Ciudad</label>
-          <input type="text" id="ciudad" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-map-pin"></i> Estado</label>
-          <input type="text" id="estado" class="form-control" required placeholder="Ej: TX, FL, NY">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-users"></i> Estado Civil</label>
-          <select id="estadoCivil" class="form-control" required>
-            <option value="Soltero">Soltero/a</option>
-            <option value="Casado">Casado/a</option>
-            <option value="Divorciado">Divorciado/a</option>
-            <option value="Viudo">Viudo/a</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento</label>
-          <input type="date" id="fechaNacimiento" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-briefcase"></i> Ocupación</label>
-          <input type="text" id="ocupacion" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
-          <input type="email" id="correo" class="form-control" required placeholder="tu@email.com">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-dollar-sign"></i> Ingreso Mensual (USD)</label>
-          <input type="number" id="ingreso" class="form-control" required placeholder="$0.00">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-hand-holding-usd"></i> Monto Solicitado (USD)</label>
-          <input type="number" id="monto" class="form-control" required placeholder="$0.00">
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-calendar-week"></i> Plazo</label>
-          <select id="plazo" class="form-control" required>
-            <option value="3">3 meses</option>
-            <option value="6">6 meses</option>
-            <option value="12">12 meses</option>
-            <option value="24">24 meses</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label><i class="fas fa-comment"></i> Uso del Préstamo</label>
-          <input type="text" id="uso" class="form-control" required placeholder="Ej: Carro, casa, negocio">
+    <!-- CARRUSEL CON FOTOS (cliente1.jpg, cliente2.jpg, cliente3.jpg) -->
+    <div class="carousel-container">
+      <h3 class="carousel-title">
+        <i class="fas fa-star"></i> Historias de Éxito <i class="fas fa-star"></i>
+      </h3>
+      
+      <div class="carousel">
+        <div class="carousel-inner" id="carouselInner">
+          <!-- Testimonio 1 - cliente1.jpg -->
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="client-photo">
+                <img src="cliente1.jpg" alt="María González" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="display: block;">
+                <div class="photo-placeholder" style="display: none;">MG</div>
+              </div>
+              <div class="client-name">María González</div>
+              <div class="client-location">Houston, TX</div>
+              <div class="client-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="client-story">
+                <i class="fas fa-quote-left"></i> Gracias a NEPA pude comprar mi primer carro. Con mi ITIN y sin historial crediticio, nunca imaginé que sería posible. El proceso fue rápido y el equipo siempre me apoyó. ¡Recomiendo a NEPA 100%! <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonio 2 - cliente2.jpg -->
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="client-photo">
+                <img src="cliente2.jpg" alt="Carlos Ramírez" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="display: block;">
+                <div class="photo-placeholder" style="display: none;">CR</div>
+              </div>
+              <div class="client-name">Carlos Ramírez</div>
+              <div class="client-location">Orlando, FL</div>
+              <div class="client-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="client-story">
+                <i class="fas fa-quote-left"></i> Tenía un pequeño negocio y necesitaba capital para crecer. NEPA confió en mí cuando otros bancos me rechazaron. Hoy mi negocio tiene 3 empleados y sigo siendo cliente. ¡Gracias NEPA! <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Testimonio 3 - cliente3.jpg -->
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="client-photo">
+                <img src="cliente3.jpg" alt="Ana Patricia Sánchez" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="display: block;">
+                <div class="photo-placeholder" style="display: none;">AS</div>
+              </div>
+              <div class="client-name">Ana Patricia Sánchez</div>
+              <div class="client-location">Dallas, TX</div>
+              <div class="client-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <div class="client-story">
+                <i class="fas fa-quote-left"></i> Consolidé todas mis deudas con NEPA y ahora pago una sola cuota mucho más baja. El proceso fue transparente y me explicaron todo paso a paso. ¡Por fin puedo ahorrar! <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <button type="submit" class="btn-primary">Solicitar Crédito</button>
-    </form>
-
-    <div id="loading" class="resultado">
-      <div class="loader"></div>
-      <p style="font-weight: 500; color:#006b3c; font-size:0.9rem;">Procesando su solicitud, por favor espere...</p>
+      <!-- Controles del carrusel -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-dots" id="carouselDots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
     </div>
-
-    <div id="resultado" class="resultado"></div>
   </div>
 
-  <!-- FOOTER COMPACTO -->
+  <!-- SECCIÓN DEL FORMULARIO (oculta al inicio) -->
+  <div id="formSection" class="form-section">
+    <div class="form-card">
+      <div class="form-header">
+        <h3>Solicita tu Crédito</h3>
+        <p>Completa tus datos. Recibirás una respuesta preliminar inmediata.</p>
+      </div>
+
+      <!-- FORMULARIO ORIGINAL -->
+      <form id="loanForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fas fa-passport"></i> Tipo de Documento</label>
+            <select id="tipoDocumento" class="form-control" required>
+              <option value="ID">ID</option>
+              <option value="Pasaporte">Pasaporte</option>
+              <option value="Licencia">Licencia</option>
+              <option value="ITIN">ITIN</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-id-card"></i> Número de Documento</label>
+            <input type="text" id="documento" class="form-control" required placeholder="N° de documento">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Nombre Completo</label>
+            <input type="text" id="nombre" class="form-control" required placeholder="Como en tu ID">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-city"></i> Ciudad</label>
+            <input type="text" id="ciudad" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-map-pin"></i> Estado</label>
+            <input type="text" id="estado" class="form-control" required placeholder="Ej: TX, FL, NY">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-users"></i> Estado Civil</label>
+            <select id="estadoCivil" class="form-control" required>
+              <option value="Soltero">Soltero/a</option>
+              <option value="Casado">Casado/a</option>
+              <option value="Divorciado">Divorciado/a</option>
+              <option value="Viudo">Viudo/a</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento</label>
+            <input type="date" id="fechaNacimiento" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-briefcase"></i> Ocupación</label>
+            <input type="text" id="ocupacion" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
+            <input type="email" id="correo" class="form-control" required placeholder="tu@email.com">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-dollar-sign"></i> Ingreso Mensual (USD)</label>
+            <input type="number" id="ingreso" class="form-control" required placeholder="$0.00">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-hand-holding-usd"></i> Monto Solicitado (USD)</label>
+            <input type="number" id="monto" class="form-control" required placeholder="$0.00">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-calendar-week"></i> Plazo</label>
+            <select id="plazo" class="form-control" required>
+              <option value="3">3 meses</option>
+              <option value="6">6 meses</option>
+              <option value="12">12 meses</option>
+              <option value="24">24 meses</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-comment"></i> Uso del Préstamo</label>
+            <input type="text" id="uso" class="form-control" required placeholder="Ej: Carro, casa, negocio">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Solicitar Crédito</button>
+      </form>
+
+      <div id="loading" class="resultado">
+        <div class="loader"></div>
+        <p style="font-weight: 500; color:#006b3c; font-size:0.9rem;">Procesando su solicitud, por favor espere...</p>
+      </div>
+
+      <div id="resultado" class="resultado"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER LEGAL -->
   <footer class="footer-legal">
-    <div class="footer-logo">
-      <img src="nepa-logo.png" alt="NEPA" onerror="this.style.display='none';" style="display: block; height: 30px;">
+    <div class="legal-links">
+      <a href="#">Términos y Condiciones</a>
+      <a href="#">Política de Privacidad</a>
     </div>
-    
-    <div class="legal-logos">
-      <div class="legal-item">
-        <i class="fas fa-home"></i>
-        <span>Equal Housing Lender</span>
-      </div>
-      <div class="legal-item">
-        <i class="fas fa-university"></i>
-        <span>NCUA Insured</span>
-      </div>
-    </div>
-    <div class="copyright">
-      © 2026 NEPA Credit Union. Todos los derechos reservados. Esta institución opera bajo regulación federal. Los préstamos están sujetos a aprobación.
-    </div>
+    <p>© 2026 NEPA Credit Union. Todos los derechos reservados. NCUA Member. Equal Housing Lender.</p>
+    <small>Los préstamos están sujetos a aprobación.</small>
   </footer>
 </div>
 
+<!-- SCRIPT (carrusel + formulario) -->
 <script>
-document.getElementById("loanForm").addEventListener("submit", function(event){
-  event.preventDefault();
-  document.getElementById("loanForm").style.display = "none";
-  document.getElementById("loading").style.display = "block";
+  // Carrusel
+  const carouselInner = document.getElementById('carouselInner');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dots = document.querySelectorAll('.dot');
+  let currentIndex = 0;
+  const totalItems = document.querySelectorAll('.carousel-item').length;
 
-  setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
+  function updateCarousel(index) {
+    if (index < 0) index = totalItems - 1;
+    if (index >= totalItems) index = 0;
+    currentIndex = index;
+    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
 
-    const tipoDocumento = document.getElementById("tipoDocumento").value;
-    const documento = document.getElementById("documento").value;
-    const nombre = document.getElementById("nombre").value;
-    const ciudad = document.getElementById("ciudad").value;
-    const estado = document.getElementById("estado").value;
-    const estadoCivil = document.getElementById("estadoCivil").value;
-    const fechaNacimiento = document.getElementById("fechaNacimiento").value;
-    const ocupacion = document.getElementById("ocupacion").value;
-    const correo = document.getElementById("correo").value;
-    const ingreso = parseFloat(document.getElementById("ingreso").value);
-    const monto = parseFloat(document.getElementById("monto").value);
-    const plazoMeses = parseInt(document.getElementById("plazo").value);
-    const uso = document.getElementById("uso").value;
+  prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+  nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+  
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => updateCarousel(index));
+  });
 
-    const interesAnual = 5;
-    const interesMensual = interesAnual / 100 / 12;
-    const pagoMensual = (monto * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazoMeses));
-    const totalPagar = pagoMensual * plazoMeses;
+  setInterval(() => updateCarousel(currentIndex + 1), 5000);
 
-    const resultadoDiv = document.getElementById("resultado");
-    resultadoDiv.style.display = "block";
-    resultadoDiv.innerHTML = `
-      <h3 style="color:#006b3c; margin-bottom:1rem;">✅ Solicitud Aprobada</h3>
-      <p style="margin-bottom:1rem;">Estimado/a <strong>${nombre}</strong>, su solicitud de crédito ha sido aprobada con éxito.</p>
-      <div class="resumen">
-        <p><strong>Tipo de Documento:</strong> <span>${tipoDocumento}</span></p>
-        <p><strong>Número:</strong> <span>${documento}</span></p>
-        <p><strong>Ciudad:</strong> <span>${ciudad}</span></p>
-        <p><strong>Estado:</strong> <span>${estado}</span></p>
-        <p><strong>Estado Civil:</strong> <span>${estadoCivil}</span></p>
-        <p><strong>Fecha de Nacimiento:</strong> <span>${fechaNacimiento}</span></p>
-        <p><strong>Ocupación:</strong> <span>${ocupacion}</span></p>
-        <p><strong>Correo:</strong> <span>${correo}</span></p>
-        <p><strong>Ingreso Mensual:</strong> <span>$${ingreso.toFixed(2)}</span></p>
-        <p><strong>Monto Aprobado:</strong> <span>$${monto.toFixed(2)}</span></p>
-        <p><strong>Plazo:</strong> <span>${plazoMeses} meses</span></p>
-        <p><strong>Uso del Préstamo:</strong> <span>${uso}</span></p>
-        <hr>
-        <p><strong>Interés Anual:</strong> <span>${interesAnual}%</span></p>
-        <p><strong>Pago Mensual:</strong> <span>$${pagoMensual.toFixed(2)}</span></p>
-        <p><strong>Total a Pagar:</strong> <span>$${totalPagar.toFixed(2)}</span></p>
-      </div>
-      <a class="whatsapp-btn" href="https://wa.me/16395590867?text=Hola,%20soy%20${encodeURIComponent(nombre)}.%20Mi%20solicitud%20de%20crédito%20fue%20aprobada.%0A%0AInformación%20del%20crédito:%0ATipo%20de%20documento:%20${encodeURIComponent(tipoDocumento)}%0ANúmero:%20${encodeURIComponent(documento)}%0AEstado:%20${encodeURIComponent(estado)}%0AIngreso:%20$${ingreso.toFixed(2)}%0AMonto:%20$${monto.toFixed(2)}%0APlazo:%20${plazoMeses}%20meses%0AInterés:%20${interesAnual}%0APago%20mensual:%20$${pagoMensual.toFixed(2)}" target="_blank">
-        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
-      </a>
-    `;
-  }, 30000);
-});
+  // Mostrar formulario
+  const showFormBtn = document.getElementById('showFormBtn');
+  const landingDiv = document.getElementById('landingContent');
+  const formSection = document.getElementById('formSection');
+
+  showFormBtn.addEventListener('click', function() {
+    landingDiv.style.transition = 'opacity 0.3s ease';
+    landingDiv.style.opacity = '0';
+    setTimeout(() => {
+      landingDiv.style.display = 'none';
+      formSection.style.display = 'block';
+    }, 280);
+  });
+
+  // FORMULARIO ORIGINAL (INTACTO)
+  document.getElementById("loanForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    document.getElementById("loanForm").style.display = "none";
+    document.getElementById("loading").style.display = "block";
+
+    setTimeout(() => {
+      document.getElementById("loading").style.display = "none";
+
+      const tipoDocumento = document.getElementById("tipoDocumento").value;
+      const documento = document.getElementById("documento").value;
+      const nombre = document.getElementById("nombre").value;
+      const ciudad = document.getElementById("ciudad").value;
+      const estado = document.getElementById("estado").value;
+      const estadoCivil = document.getElementById("estadoCivil").value;
+      const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+      const ocupacion = document.getElementById("ocupacion").value;
+      const correo = document.getElementById("correo").value;
+      const ingreso = parseFloat(document.getElementById("ingreso").value);
+      const monto = parseFloat(document.getElementById("monto").value);
+      const plazoMeses = parseInt(document.getElementById("plazo").value);
+      const uso = document.getElementById("uso").value;
+
+      const interesAnual = 5;
+      const interesMensual = interesAnual / 100 / 12;
+      const pagoMensual = (monto * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazoMeses));
+      const totalPagar = pagoMensual * plazoMeses;
+
+      const resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.style.display = "block";
+      resultadoDiv.innerHTML = `
+        <h3 style="color:#006b3c; margin-bottom:1rem;">✅ Solicitud Aprobada</h3>
+        <p style="margin-bottom:1rem;">Estimado/a <strong>${nombre}</strong>, su solicitud de crédito ha sido aprobada con éxito.</p>
+        <div class="resumen">
+          <p><strong>Tipo de Documento:</strong> <span>${tipoDocumento}</span></p>
+          <p><strong>Número:</strong> <span>${documento}</span></p>
+          <p><strong>Ciudad:</strong> <span>${ciudad}</span></p>
+          <p><strong>Estado:</strong> <span>${estado}</span></p>
+          <p><strong>Estado Civil:</strong> <span>${estadoCivil}</span></p>
+          <p><strong>Fecha de Nacimiento:</strong> <span>${fechaNacimiento}</span></p>
+          <p><strong>Ocupación:</strong> <span>${ocupacion}</span></p>
+          <p><strong>Correo:</strong> <span>${correo}</span></p>
+          <p><strong>Ingreso Mensual:</strong> <span>$${ingreso.toFixed(2)}</span></p>
+          <p><strong>Monto Aprobado:</strong> <span>$${monto.toFixed(2)}</span></p>
+          <p><strong>Plazo:</strong> <span>${plazoMeses} meses</span></p>
+          <p><strong>Uso del Préstamo:</strong> <span>${uso}</span></p>
+          <hr>
+          <p><strong>Interés Anual:</strong> <span>${interesAnual}%</span></p>
+          <p><strong>Pago Mensual:</strong> <span>$${pagoMensual.toFixed(2)}</span></p>
+          <p><strong>Total a Pagar:</strong> <span>$${totalPagar.toFixed(2)}</span></p>
+        </div>
+        <a class="whatsapp-btn" href="https://wa.me/16395590867?text=Hola,%20soy%20${encodeURIComponent(nombre)}.%20Mi%20solicitud%20de%20crédito%20fue%20aprobada.%0A%0AInformación%20del%20crédito:%0ATipo%20de%20documento:%20${encodeURIComponent(tipoDocumento)}%0ANúmero:%20${encodeURIComponent(documento)}%0AEstado:%20${encodeURIComponent(estado)}%0AIngreso:%20$${ingreso.toFixed(2)}%0AMonto:%20$${monto.toFixed(2)}%0APlazo:%20${plazoMeses}%20meses%0AInterés:%20${interesAnual}%0APago%20mensual:%20$${pagoMensual.toFixed(2)}" target="_blank">
+          <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+        </a>
+      `;
+    }, 30000);
+  });
 </script>
-
 </body>
 </html>
