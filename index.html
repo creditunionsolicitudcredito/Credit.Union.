@@ -412,7 +412,7 @@
       transform: scale(1.2);
     }
 
-    /* ===== FORMULARIO ===== */
+    /* ===== FORMULARIO MULTIPASOS CON ANIMACIÓN ===== */
     .form-section {
       display: none;
       margin: 1rem 0 2rem;
@@ -444,7 +444,46 @@
       color: #3e5569;
       font-size: 0.85rem;
       text-align: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Pasos indicador */
+    .steps-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding: 0 0.2rem;
+    }
+    .step-item {
+      flex: 1;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #9bb7d4;
+      border-bottom: 3px solid #d6e2ef;
+      padding-bottom: 0.4rem;
+      transition: all 0.2s;
+    }
+    .step-item.active {
+      color: #006b3c;
+      border-bottom: 3px solid #b78a3f;
+    }
+
+    /* páginas con animación de entrada/salida */
+    .form-page {
+      display: none;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .form-page.active-page {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+    }
+    /* Animación hacia atrás (se puede controlar con JS agregando clase, pero simplificamos con la misma transición) */
+    .form-page.prev-direction {
+      transform: translateX(-20px);
     }
 
     .form-grid {
@@ -478,6 +517,19 @@
       background: #fafcff;
     }
 
+    .btn-nav {
+      background: #ffffff;
+      border: 2px solid #006b3c;
+      color: #006b3c;
+      font-weight: 600;
+      padding: 0.7rem 1.5rem;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
     .btn-primary {
       background: #006b3c;
       color: white;
@@ -488,8 +540,12 @@
       border-radius: 30px;
       width: 100%;
       cursor: pointer;
-      margin-top: 1.2rem;
       box-shadow: 0 6px 14px rgba(0, 107, 60, 0.4);
+    }
+    .navigation-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
     }
 
     /* LOADER Y RESULTADOS */
@@ -737,99 +793,118 @@ src="https://www.facebook.com/tr?id=1401432975091429&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <!-- SECCIÓN DEL FORMULARIO -->
+  <!-- SECCIÓN DEL FORMULARIO MULTIPASOS CON ANIMACIÓN -->
   <div id="formSection" class="form-section">
     <div class="form-card">
       <div class="form-header">
         <h3>Solicita tu Crédito</h3>
-        <p>Completa tus datos. Recibirás una respuesta preliminar inmediata.</p>
+        <p>Completa los pasos para recibir tu respuesta preliminar.</p>
       </div>
 
-      <!-- FORMULARIO ORIGINAL -->
+      <!-- Indicador de pasos -->
+      <div class="steps-indicator">
+        <span class="step-item active" id="step1-ind">Personal</span>
+        <span class="step-item" id="step2-ind">Contacto</span>
+        <span class="step-item" id="step3-ind">Financiero</span>
+      </div>
+
       <form id="loanForm">
-        <div class="form-grid">
-          <div class="form-group">
-            <label><i class="fas fa-passport"></i> Tipo de Documento</label>
-            <select id="tipoDocumento" class="form-control" required>
-              <option value="ID">ID</option>
-              <option value="Pasaporte">Pasaporte</option>
-              <option value="Licencia">Licencia</option>
-              <option value="ITIN">ITIN</option>
-            </select>
+        <!-- PÁGINA 1: INFORMACIÓN PERSONAL -->
+        <div id="page1" class="form-page active-page">
+          <div class="form-grid">
+            <div class="form-group">
+              <label><i class="fas fa-passport"></i> Tipo de Documento</label>
+              <select id="tipoDocumento" class="form-control" required>
+                <option value="ID">ID</option>
+                <option value="Pasaporte">Pasaporte</option>
+                <option value="Licencia">Licencia</option>
+                <option value="ITIN">ITIN</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-id-card"></i> Número de Documento</label>
+              <input type="text" id="documento" class="form-control" required placeholder="N° de documento">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-user"></i> Nombre Completo</label>
+              <input type="text" id="nombre" class="form-control" required placeholder="Como en tu ID">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento</label>
+              <input type="date" id="fechaNacimiento" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-users"></i> Estado Civil</label>
+              <select id="estadoCivil" class="form-control" required>
+                <option value="Soltero">Soltero/a</option>
+                <option value="Casado">Casado/a</option>
+                <option value="Divorciado">Divorciado/a</option>
+                <option value="Viudo">Viudo/a</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-briefcase"></i> Ocupación</label>
+              <input type="text" id="ocupacion" class="form-control" required>
+            </div>
           </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-id-card"></i> Número de Documento</label>
-            <input type="text" id="documento" class="form-control" required placeholder="N° de documento">
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-user"></i> Nombre Completo</label>
-            <input type="text" id="nombre" class="form-control" required placeholder="Como en tu ID">
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-city"></i> Ciudad</label>
-            <input type="text" id="ciudad" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-map-pin"></i> Estado</label>
-            <input type="text" id="estado" class="form-control" required placeholder="Ej: TX, FL, NY">
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-users"></i> Estado Civil</label>
-            <select id="estadoCivil" class="form-control" required>
-              <option value="Soltero">Soltero/a</option>
-              <option value="Casado">Casado/a</option>
-              <option value="Divorciado">Divorciado/a</option>
-              <option value="Viudo">Viudo/a</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-calendar-alt"></i> Fecha de Nacimiento</label>
-            <input type="date" id="fechaNacimiento" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-briefcase"></i> Ocupación</label>
-            <input type="text" id="ocupacion" class="form-control" required>
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
-            <input type="email" id="correo" class="form-control" required placeholder="tu@email.com">
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-dollar-sign"></i> Ingreso Mensual (USD)</label>
-            <input type="number" id="ingreso" class="form-control" required placeholder="$0.00">
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-hand-holding-usd"></i> Monto Solicitado (USD)</label>
-            <input type="number" id="monto" class="form-control" required placeholder="$0.00">
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-calendar-week"></i> Plazo</label>
-            <select id="plazo" class="form-control" required>
-              <option value="3">3 meses</option>
-              <option value="6">6 meses</option>
-              <option value="12">12 meses</option>
-              <option value="24">24 meses</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-comment"></i> Uso del Préstamo</label>
-            <input type="text" id="uso" class="form-control" required placeholder="Ej: Carro, casa, negocio">
+          <div class="navigation-buttons">
+            <div></div> <!-- vacío para mantener espacio -->
+            <button type="button" class="btn-nav" id="toPage2"><i class="fas fa-arrow-right"></i> Siguiente</button>
           </div>
         </div>
 
-        <button type="submit" class="btn-primary">Solicitar Crédito</button>
+        <!-- PÁGINA 2: CONTACTO Y UBICACIÓN -->
+        <div id="page2" class="form-page">
+          <div class="form-grid">
+            <div class="form-group">
+              <label><i class="fas fa-city"></i> Ciudad</label>
+              <input type="text" id="ciudad" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-map-pin"></i> Estado</label>
+              <input type="text" id="estado" class="form-control" required placeholder="Ej: TX, FL, NY">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
+              <input type="email" id="correo" class="form-control" required placeholder="tu@email.com">
+            </div>
+          </div>
+          <div class="navigation-buttons">
+            <button type="button" class="btn-nav" id="backToPage1"><i class="fas fa-arrow-left"></i> Anterior</button>
+            <button type="button" class="btn-nav" id="toPage3">Siguiente <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- PÁGINA 3: INFORMACIÓN FINANCIERA + BOTÓN FINAL -->
+        <div id="page3" class="form-page">
+          <div class="form-grid">
+            <div class="form-group">
+              <label><i class="fas fa-dollar-sign"></i> Ingreso Mensual (USD)</label>
+              <input type="number" id="ingreso" class="form-control" required placeholder="$0.00">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-hand-holding-usd"></i> Monto Solicitado (USD)</label>
+              <input type="number" id="monto" class="form-control" required placeholder="$0.00">
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-calendar-week"></i> Plazo</label>
+              <select id="plazo" class="form-control" required>
+                <option value="3">3 meses</option>
+                <option value="6">6 meses</option>
+                <option value="12">12 meses</option>
+                <option value="24">24 meses</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="fas fa-comment"></i> Uso del Préstamo</label>
+              <input type="text" id="uso" class="form-control" required placeholder="Ej: Carro, casa, negocio">
+            </div>
+          </div>
+          <div class="navigation-buttons">
+            <button type="button" class="btn-nav" id="backToPage2"><i class="fas fa-arrow-left"></i> Anterior</button>
+            <button type="submit" class="btn-primary">Solicitar Crédito</button>
+          </div>
+        </div>
       </form>
 
       <div id="loading" class="resultado">
@@ -852,7 +927,7 @@ src="https://www.facebook.com/tr?id=1401432975091429&ev=PageView&noscript=1"
   </footer>
 </div>
 
-<!-- SCRIPT (carrusel + formulario + evento Meta) -->
+<!-- SCRIPT: carrusel + multipasos con animación + Meta Pixel intacto -->
 <script>
   // Carrusel
   const carouselInner = document.getElementById('carouselInner');
@@ -867,22 +942,14 @@ src="https://www.facebook.com/tr?id=1401432975091429&ev=PageView&noscript=1"
     if (index >= totalItems) index = 0;
     currentIndex = index;
     carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-    
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
-    });
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
   }
-
   prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
   nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
-  
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => updateCarousel(index));
-  });
-
+  dots.forEach((dot, index) => dot.addEventListener('click', () => updateCarousel(index)));
   setInterval(() => updateCarousel(currentIndex + 1), 5000);
 
-  // Mostrar formulario
+  // Mostrar formulario (landing a form)
   const showFormBtn = document.getElementById('showFormBtn');
   const landingDiv = document.getElementById('landingContent');
   const formSection = document.getElementById('formSection');
@@ -896,9 +963,106 @@ src="https://www.facebook.com/tr?id=1401432975091429&ev=PageView&noscript=1"
     }, 280);
   });
 
-  // FORMULARIO ORIGINAL (con evento Meta Pixel en el botón de WhatsApp)
+  // MULTIPASOS CON ANIMACIÓN
+  const page1 = document.getElementById('page1');
+  const page2 = document.getElementById('page2');
+  const page3 = document.getElementById('page3');
+  const step1 = document.getElementById('step1-ind');
+  const step2 = document.getElementById('step2-ind');
+  const step3 = document.getElementById('step3-ind');
+
+  // Función para cambiar de página con animación
+  function showPageWithAnimation(nextPageNumber, direction = 'next') {
+    // determinar página actual y siguiente
+    let currentPage, nextPage;
+    if (nextPageNumber === 1) {
+      currentPage = page2.classList.contains('active-page') ? page2 : page3;
+      nextPage = page1;
+    } else if (nextPageNumber === 2) {
+      currentPage = page1.classList.contains('active-page') ? page1 : page3;
+      nextPage = page2;
+    } else {
+      currentPage = page1.classList.contains('active-page') ? page1 : page2;
+      nextPage = page3;
+    }
+
+    // Configurar dirección de animación
+    if (direction === 'next') {
+      currentPage.style.transform = 'translateX(-20px)';
+      currentPage.style.opacity = '0';
+      nextPage.style.transform = 'translateX(20px)';
+    } else {
+      currentPage.style.transform = 'translateX(20px)';
+      currentPage.style.opacity = '0';
+      nextPage.style.transform = 'translateX(-20px)';
+    }
+
+    // Forzar reflow para reiniciar animación
+    void currentPage.offsetWidth;
+
+    // Ocultar current, mostrar next con animación
+    setTimeout(() => {
+      page1.classList.remove('active-page');
+      page2.classList.remove('active-page');
+      page3.classList.remove('active-page');
+      
+      nextPage.classList.add('active-page');
+      
+      // Reset transforms después de mostrar
+      setTimeout(() => {
+        nextPage.style.transform = '';
+        nextPage.style.opacity = '';
+      }, 20);
+      
+      // Actualizar indicadores
+      step1.classList.remove('active');
+      step2.classList.remove('active');
+      step3.classList.remove('active');
+      if (nextPageNumber === 1) step1.classList.add('active');
+      else if (nextPageNumber === 2) step2.classList.add('active');
+      else step3.classList.add('active');
+    }, 150);
+  }
+
+  // Event listeners con validación
+  document.getElementById('toPage2').addEventListener('click', function(e) {
+    e.preventDefault();
+    const required = page1.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => { if (!field.value) valid = false; });
+    if (!valid) { alert('Por favor completa todos los campos obligatorios.'); return; }
+    showPageWithAnimation(2, 'next');
+  });
+
+  document.getElementById('backToPage1').addEventListener('click', function(e) {
+    e.preventDefault();
+    showPageWithAnimation(1, 'prev');
+  });
+
+  document.getElementById('toPage3').addEventListener('click', function(e) {
+    e.preventDefault();
+    const required = page2.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => { if (!field.value) valid = false; });
+    if (!valid) { alert('Por favor completa todos los campos obligatorios.'); return; }
+    showPageWithAnimation(3, 'next');
+  });
+
+  document.getElementById('backToPage2').addEventListener('click', function(e) {
+    e.preventDefault();
+    showPageWithAnimation(2, 'prev');
+  });
+
+  // FORMULARIO FINAL (copia exacta del original, track Meta Pixel intacto)
   document.getElementById("loanForm").addEventListener("submit", function(event){
     event.preventDefault();
+    // validar campos de la página 3
+    const requiredPage3 = page3.querySelectorAll('[required]');
+    let validFinal = true;
+    requiredPage3.forEach(field => { if (!field.value) validFinal = false; });
+    if (!validFinal) { alert('Completa todos los campos obligatorios.'); return; }
+
+    // Ocultar formulario y mostrar loading
     document.getElementById("loanForm").style.display = "none";
     document.getElementById("loading").style.display = "block";
 
